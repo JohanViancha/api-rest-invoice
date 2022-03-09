@@ -5,6 +5,7 @@
 package com.webservice.uts.controllers;
 
 import com.webservice.uts.models.entities.Cliente;
+import com.webservice.uts.models.entities.Region;
 import com.webservice.uts.models.services.IClienteService;
 import java.util.HashMap;
 import java.util.List;
@@ -145,5 +146,13 @@ public class ClienteRestController {
                    response.put("mensaje", "El cliente eliminado con éxito");
                    return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
         }
+        
+        
+        @GetMapping("/clientes/regiones")
+	public List<Region> listarRegiones(){
+		return clienteService.findAllRegiones();
+	}
+	
+        
         
 }

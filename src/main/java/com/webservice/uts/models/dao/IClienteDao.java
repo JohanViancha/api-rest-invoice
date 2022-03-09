@@ -5,6 +5,9 @@
 package com.webservice.uts.models.dao;
 
 import com.webservice.uts.models.entities.Cliente;
+import com.webservice.uts.models.entities.Region;
+import java.util.List;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -13,6 +16,8 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface IClienteDao extends CrudRepository<Cliente, Long> {
     
-    
+    @Query("from Region")
+	public List<Region> findAllRegiones();
+
     
 }

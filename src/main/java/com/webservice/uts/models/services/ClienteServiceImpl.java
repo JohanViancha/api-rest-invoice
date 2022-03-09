@@ -6,6 +6,7 @@ package com.webservice.uts.models.services;
 
 import com.webservice.uts.models.dao.IClienteDao;
 import com.webservice.uts.models.entities.Cliente;
+import com.webservice.uts.models.entities.Region;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,6 +47,12 @@ public class ClienteServiceImpl implements IClienteService{
     public void delete(Cliente cliente) {
            
           clienteDao.delete(cliente);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Region> findAllRegiones() {
+         return clienteDao.findAllRegiones();
     }
     
 }

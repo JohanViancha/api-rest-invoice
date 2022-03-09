@@ -5,6 +5,7 @@
 package com.webservice.uts.models.services;
 
 import com.webservice.uts.models.entities.Cliente;
+import com.webservice.uts.models.entities.Region;
 import java.util.List;
 
 /**
@@ -20,4 +21,6 @@ public interface IClienteService {
     public Cliente save(Cliente cliente);
     
     public void delete(Cliente cliente);
+    
+    public List<Region> findAllRegiones();
 }
