@@ -5,7 +5,11 @@
 package com.webservice.uts.models.services;
 
 import com.webservice.uts.models.dao.IClienteDao;
+import com.webservice.uts.models.dao.IFacturaDao;
+import com.webservice.uts.models.dao.IProductoDao;
 import com.webservice.uts.models.entities.Cliente;
+import com.webservice.uts.models.entities.Factura;
+import com.webservice.uts.models.entities.Producto;
 import com.webservice.uts.models.entities.Region;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +25,12 @@ public class ClienteServiceImpl implements IClienteService{
 
     @Autowired
     private IClienteDao clienteDao;
+    
+    @Autowired
+    private IFacturaDao facturaDao;
+
+    @Autowired
+    private IProductoDao productoDao;
     
     @Override
     @Transactional(readOnly=true)
@@ -53,6 +63,31 @@ public class ClienteServiceImpl implements IClienteService{
     @Transactional(readOnly = true)
     public List<Region> findAllRegiones() {
          return clienteDao.findAllRegiones();
+    }
+
+    @Override
+    public Factura findFacturaById(Long id) {
+        return facturaDao.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Factura> findFacturaAll() {
+        return (List<Factura>) facturaDao.findAll();
+    }
+
+    @Override
+    public Factura saveFactura(Factura factura) {
+          return facturaDao.save(factura);
+    }
+
+    @Override
+    public void deleteFacturaById(Long id) {
+        facturaDao.deleteById(id);
+    }
+
+    @Override
+    public List<Producto> findProductoByNombre(String term) {
+       return productoDao.findByNombreContainingIgnoreCase(term);
     }
     
 }
