@@ -45,3 +45,14 @@ INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES(1, 1, 7);
 
 INSERT INTO facturas (descripcion, observacion, cliente_id, create_at) VALUES('Factura Bicicleta', 'Alguna nota importante!', 1, NOW());
 INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES(3, 2, 6);
+
+/*Creamos los usuario del sistema*/
+INSERT INTO usuarios (username, password, enabled, nombre, apellido, email) VALUES ('andres','$2a$10$pLQvxwsrJWNMmPxyaFVPGujMkcS7shC0SJqoLXVzFVFSveid3eiKy',true, 'Andres', 'Guzman','profesor@gmail.com');
+INSERT INTO usuarios (username, password, enabled, nombre, apellido, email) VALUES ('admin','$2a$10$xL1HiyRWfJrPZ.86dhjxO.OR7GerM/0Bh9BssLqvuxbTZZOkryjQ2',true, 'John', 'Doe','jhon.doe@gmail.com');
+
+INSERT INTO roles (nombre) VALUES ('ROLE_USER');
+INSERT INTO roles (nombre) VALUES ('ROLE_ADMIN');
+
+INSERT INTO usuarios_roles (usuario_id, role_id) VALUES (1, 1);
+INSERT INTO usuarios_roles (usuario_id, role_id) VALUES (2, 2);
+INSERT INTO usuarios_roles (usuario_id, role_id) VALUES (2, 1);
